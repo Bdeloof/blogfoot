@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Modifier l'utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'utilisateur</h1>
+
+    {{ include('profile/_form.html.twig', {'button_label': 'Update'}) }}
+{% endblock %}

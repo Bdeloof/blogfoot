@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-homepage{
+    width: 100%;
+    height: 100%;
+}
+
+.titre-page{
+    font-size: 60px;
+}
+
+.intro-site{
+    font-size: 20px;
+}

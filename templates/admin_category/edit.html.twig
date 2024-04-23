@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Modifier une catégorie{% endblock %}
+
+{% block body %}
+    <h1 style="font-size: 60px">Modifier une catégorie</h1>
+
+
+    {{ include('admin_category/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_admin_category_index') }}"><button class="btn btn-lg btn-primary">Retour à la liste des catégories</button></a>
+
+    {{ include('admin_category/_delete_form.html.twig') }}
+{% endblock %}

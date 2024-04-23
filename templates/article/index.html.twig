@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Nos articles{% endblock %}
+
+{% block body %}
+
+    <h1 style="font-size: 60px">Nos articles</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th><h2 style="font-size: 40px; margin-left: 90px">Titre de l'article</h2></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}"><button type="button" class="btn btn-primary">Regarder cet article</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun article disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

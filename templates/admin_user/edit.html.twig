@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Modifier un compte utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Modifier un compte utilisateur</h1>
+
+    {{ include('admin_user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_admin_user_index') }}"><button class="btn btn-lg btn-primary">Retour à la liste des comptes utilisateurs</button></a>
+
+    {{ include('admin_user/_delete_form.html.twig') }}
+{% endblock %}

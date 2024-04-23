@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Liste des comptes utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des comptes utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}"><button class="btn btn-success">Regarder ce compte utilisateur</button></a>
+                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}"><button class="btn btn-secondary">Modifier ce compte utilisateur</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun compte utilisateur sur ce site.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_user_new') }}"><button class="btn btn-primary">Créer un nouveau compte utilisateur</button></a>
+{% endblock %}

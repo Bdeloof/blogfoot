@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Liste des catégories{% endblock %}
+
+{% block body %}
+    <h1>Liste des catégories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('app_admin_category_edit', {'id': category.id}) }}"><button class="btn btn-secondary">Modifier la catégorie</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune catégorie trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_category_new') }}"><button class="btn btn-primary">Créer une nouvelle catégorie</button></a>
+{% endblock %}

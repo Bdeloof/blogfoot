@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Ecrire un nouvel article{% endblock %}
+
+{% block body %}
+    <h1>Ecrire un nouvel article</h1>
+
+    {{ include('admin_article/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_article_index') }}"><button class="btn btn-primary">Revenir à la liste des articles</button></a>
+{% endblock %}

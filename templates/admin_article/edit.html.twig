@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Modifier un article{% endblock %}
+
+{% block body %}
+    <h1 style="font-size: 60px">Modifier un article</h1>
+
+    {{ include('admin_article/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_admin_article_index') }}"><button class="btn btn-lg btn-primary">Retour à la liste des articles</button></a>
+
+    {{ include('admin_article/_delete_form.html.twig') }}
+{% endblock %}

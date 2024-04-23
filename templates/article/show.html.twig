@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+
+    <p style="padding-top: 30px">{{ article.content }}</p>
+
+    <div style="margin-bottom: 30px">
+        <a href="{{ path('app_comment_new', {'id': article.id}) }}"><button class="btn btn-lg btn-primary">Ajouter un commentaire</button></a>
+    </div>
+
+    <div>
+        {% for comment in comments %}
+            <div><h3>{{ comment.user.nickname }} a dit :</h3></div>
+            <br>
+            <div>{{ comment.content }}</div>
+            <br>
+        {% endfor %}
+    </div>
+
+    <a href="{{ path('app_article_index') }}"><button class="btn btn-lg btn-primary">Retourner à la liste des articles</button></a>
+{% endblock %}

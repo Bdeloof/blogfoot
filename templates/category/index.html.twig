@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogFoot - Catégories{% endblock %}
+
+{% block body %}
+    <h1 style="font-size: 60px">Liste des catégories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th><h2 style="font-size: 40px; margin-left: 90px">Nom de la catégorie</h2></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td style="font-size: 20px">{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}"><button type="button" class="btn btn-primary">Voir les articles de cette catégorie</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune catégorie trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

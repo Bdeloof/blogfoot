@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -17,9 +20,16 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Length(min: 5)]
+    #[Length(max: 100)]
+    #[NotBlank()]
+    #[Regex('^[a-z0-9_-]{3,15}$', message: 'Veuillez utiliser des caractères normaux')]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Length(min: 5)]
+    #[NotBlank()]
+    #[Regex('^[a-z0-9_-]{3,15}$', message: 'Veuillez utiliser des caractères normaux')]
     private ?string $content = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]

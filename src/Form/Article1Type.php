@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class Article1Type extends AbstractType
 {
@@ -16,13 +17,25 @@ class Article1Type extends AbstractType
     {
         $builder
             ->add('title', options:[
-                'label' => 'Titre de l\'article'
+                'label' => 'Titre de l\'article',
+                'constraints' => [
+                    new Length(
+                        min: 10,
+                        max: 100
+                    )
+                    ]
             ])
             ->add('content', options:[
                 'label' => 'Contenu de l\'article'
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
+                'constraints' => [
+                    new Length(
+                        min: 5,
+                        max: 50
+                    )
+                ],
                 'label' => 'Auteur de l\'article',
 'choice_label' => 'id',
             ])

@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -21,10 +22,17 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Adresse Email'
             ])
             ->add('nickname', options:[
-                'label' => 'Votre surnom'
+                'label' => 'Votre surnom',
+                'constraints' => [
+                    new Length(
+                        min: 5,
+                        max: 50
+                    )
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                                 'mapped' => false,
+                                'required' => true,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez acceptez les termes',
@@ -37,15 +45,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'Nouveau mot de passe'],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrer un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractère',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
+                    new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?.!@$%^&*-]).{14,}$/', "Il faut un mot de passe de 14 caractères avec 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial")
                 ],
             ])
         ;
